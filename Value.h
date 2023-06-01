@@ -1,5 +1,6 @@
 #pragma once
 #include "MyString.h"
+/*with help of chatGPT*/
 class Value {
 public:
 	virtual ~Value() = default;
@@ -11,4 +12,3 @@ public:
 	virtual bool isArray() const = 0;
 	virtual size_t elemInValue() const = 0;
 };
-/*with help of chatGPT*/
