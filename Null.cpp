@@ -1,5 +1,5 @@
 #include "Null.h"
-
+#include <stdexcept>
 Null::Null(const MyString& str)
 {
 	if (isValid(str)) {
