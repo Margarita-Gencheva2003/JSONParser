@@ -2,29 +2,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <sstream>
-#include <cmath>
-namespace {
-	size_t myPow(size_t a, size_t b) {
-		size_t result = 1;
-		for (size_t i = 0; i < b; i++) {
-			result *= a;
-		}
-		return result;
-	}
-	size_t calcNumberLen(int num) {//chatGPT
-		size_t length = 0;
-		int number = abs(num);
-		if (number == 0) {
-			return 1;
-		}
-		while (number > 0) {
-			number /= 10;
-			length++;
-		}
 
-		return length;
-	}
-}
 NumberWrapper::NumberWrapper(const MyString& str):num(parse(str)) {}
 
 MyString NumberWrapper::toString() const//internet
