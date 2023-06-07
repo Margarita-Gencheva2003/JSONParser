@@ -1,5 +1,5 @@
 #include "Boolean.h"
-
+#include <stdexcept>
 Boolean::Boolean(const MyString& strBool):strBool(parse(strBool)) {}
 
 MyString Boolean::toString() const
