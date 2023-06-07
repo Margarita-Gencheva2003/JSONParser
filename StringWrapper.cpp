@@ -1,9 +1,11 @@
 #include "StringWrapper.h"
-
+#include <stdexcept>
 StringWrapper::StringWrapper(const MyString& str)
 {
 	if (isValid(str))
 		this->str = str;
+	else
+		throw std::invalid_argument("not valid string");
 }
 
 MyString StringWrapper::toString() const
