@@ -6,6 +6,7 @@ class NumberWrapper: public SimpleValue
 public:
 	NumberWrapper(const MyString& str);
     MyString toString() const override;
+	void change(const MyString& newStr) override;
 	Value* clone() const;
 private:
 	double num;

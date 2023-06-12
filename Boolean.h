@@ -5,6 +5,7 @@ class Boolean: public SimpleValue
 public:
 	Boolean(const MyString& strBool);
 	 MyString toString() const override;
+	 void change(const MyString& newStr) override;
 	 Value* clone() const override;
 private:
 	bool strBool;

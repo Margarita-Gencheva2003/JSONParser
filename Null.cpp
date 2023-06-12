@@ -1,13 +1,8 @@
 #include "Null.h"
-#include <stdexcept>
+
 Null::Null(const MyString& str)
 {
-	if (isValid(str)) {
-		this->myNull = NULL;
-	}
-	else {
-		throw std::invalid_argument("str is not null");
-	}
+	change(str);
 }
 
 MyString Null::toString() const
@@ -15,6 +10,16 @@ MyString Null::toString() const
 	if (myNull == NULL)
 		return "null";
 	return "non";
+}
+
+void Null::change(const MyString& newStr)
+{
+	if (isValid(newStr)) {
+		this->myNull = NULL;
+	}
+	else {
+		throw std::invalid_argument("str is not null");
+	}
 }
 
 Value* Null::clone() const

@@ -5,6 +5,7 @@ class Null: public SimpleValue
 public:
 	Null(const MyString& str);
 	MyString toString() const override;
+	void change(const MyString& newStr) override;
 	Value* clone() const override;
 private:
 	void* myNull;

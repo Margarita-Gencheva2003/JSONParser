@@ -5,7 +5,7 @@
 
 NumberWrapper::NumberWrapper(const MyString& str):num(parse(str)) {}
 
-MyString NumberWrapper::toString() const//internet
+MyString NumberWrapper::toString() const
 {
 	std::stringstream ss;
 	ss << this->num;
@@ -13,12 +13,17 @@ MyString NumberWrapper::toString() const//internet
 	return str;
 }
 
+void NumberWrapper::change(const MyString& newStr)
+{
+	this->num = parse(newStr);
+}
+
 Value* NumberWrapper::clone() const
 {
 	return new NumberWrapper(*this);
 }
 
-double NumberWrapper::parse(const MyString& str)//stackoverflow and internet
+double NumberWrapper::parse(const MyString& str)
 {
 	if (!isValid(str))
 		throw std::invalid_argument("read string is not valid number!");

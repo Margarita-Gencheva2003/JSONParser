@@ -1,5 +1,5 @@
 #include "Boolean.h"
-#include <stdexcept>
+
 Boolean::Boolean(const MyString& strBool):strBool(parse(strBool)) {}
 
 MyString Boolean::toString() const
@@ -13,6 +13,11 @@ MyString Boolean::toString() const
     default:
         return "non";
     }
+}
+
+void Boolean::change(const MyString& newStr)
+{
+   this->strBool = parse(newStr);
 }
 
 Value* Boolean::clone() const
