@@ -69,12 +69,31 @@ public:
     Object():value(nullptr) {}
     void parse(sview s) override{
         size_t i = 0;
-        while(s[i] != ':'){
+        while (s[i] != ':') {
             ++i;
         }
-        key = s.substr(0, i);
-        key = key.trim();
-        sview valueStr = s.substr(i + 1, s.length() - (i + 1));
+        key = s.substr(0, i).trim();
+        
+        sview valueStr = s.substr(i + 1, s.length() - (i + 1)).trim();
+        
+        if (valueStr[0] == '{') {
+            // Find the corresponding closing curly brace '}'
+            size_t j = 0;
+            int braceCount = 1;
+            while (j < valueStr.length()) {
+                if (valueStr[j] == '{') {
+                    braceCount++;
+                } else if (valueStr[j] == '}') {
+                    braceCount--;
+                }
+                if (braceCount == 0) {
+                    break;
+                }
+                ++j;
+            }
+            valueStr = valueStr.substr(1, j - 1).trim();
+        }
+    
         value = factory(valueStr);
         value->parse(valueStr);
     }
