@@ -155,6 +155,6 @@ int main()
     //s.print();
     Value* jsonV = factory(s);
     jsonV->print();
-    
+    //TO DO: memory leak: shoud delete json obj
     return 0;
 }
