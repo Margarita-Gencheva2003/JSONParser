@@ -4,12 +4,8 @@
 #include <cstdlib>
 struct sview{
 public:
-    sview():begin(nullptr), end(nullptr) {
-        std::cout << "sview()" << std::endl;
-    }
-    sview(char* begin, char* end):begin(begin), end(end) {
-        std::cout << "sview(params)" << std::endl;
-    }
+    sview():begin(nullptr), end(nullptr) {}
+    sview(char* begin, char* end):begin(begin), end(end) {}
     sview ltrim(){
         if(begin > end)
             throw std::invalid_argument("begin > end");
