@@ -1,42 +1,32 @@
 #include "Boolean.h"
+#include <stdexcept>
+#include <iostream>
 
-Boolean::Boolean(const MyString& strBool):strBool(parse(strBool)) {}
-
-MyString Boolean::toString() const
+void BooleanValue::print() const
 {
-    switch (strBool)
-    {
-    case true:
-        return "true";
-    case false:
-        return "false";
-    default:
-        return "non";
-    }
+	std::cout << value << " ";
 }
 
-void Boolean::change(const MyString& newStr)
+void BooleanValue::parse(sview s)
 {
-   this->strBool = parse(newStr);
+	size_t len = s.length();
+	
+	if (len == 4) {
+		if (s[0] == 't' && s[1] == 'r' && s[2] == 'u' && s[3] == 'e')
+			value = true;
+		else if (s[0] == 'n' && s[1] == 'u' && s[2] == 'l' && s[3] == 'l')
+			value = NULL;
+	}
+	else if (len == 5) {
+		if (s[0] == 'f' && s[1] == 'a' && s[2] == 'l' && s[3] == 's' && s[4] == 'e')
+			value = false;
+	}
+	else {
+		throw std::runtime_error("invalid boolean");
+	}
 }
 
-Value* Boolean::clone() const
+Value* BooleanValue::clone() const
 {
-    return new Boolean(*this);
-}
-
-bool Boolean::isValid(const MyString& str) const
-{
-    return str == "true" || str == "false";
-}
-
-bool Boolean::parse(const MyString& str)
-{
-    if (!isValid(str))
-        throw std::invalid_argument("str is not boolean");
-    if (str == "true")
-        return true;
-    else 
-        return false;
-  
+	return new BooleanValue(*this);
 }

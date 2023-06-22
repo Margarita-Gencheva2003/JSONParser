@@ -1,10 +1,11 @@
 #pragma once
-#include "MyString.h"
-/*with help of chatGPT*/
-class Value {
+#include "sview.h"
+struct Value
+{
 public:
 	virtual ~Value() = default;
-	virtual MyString toString() const = 0;
+	virtual void print() const = 0;
+	virtual void parse(sview s) = 0;
 	virtual Value* clone() const = 0;
-	virtual void change(const MyString& newStr) = 0;
 };
+
