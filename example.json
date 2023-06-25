@@ -1,0 +1,10 @@
+{
+  "Temperature": {
+    "sofia": {
+      "mladost": 12.89,
+      "nadezda": 32
+    },
+    "plovdiv": 32
+  },
+  "stars": [ "five", "four" ]
+}

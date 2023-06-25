@@ -5,7 +5,8 @@
 #include "Boolean.h"
 #include "NumberValue.h"
 #include "StringValue.h"
-
+#include "Manager.h"
+#include <fstream>
 Value* factory(sview s) {
 	s = s.trim();
 	size_t len = s.length();
@@ -48,8 +49,7 @@ Value* factory(sview s) {
 	throw std::runtime_error("Malformed JSON: unknown");
 }
 int main() {
-	char arr[] = "{  \"Cities\" : {\"sofia\": 1, \"plovdiv\" : 2}, \"Temps\": [10, 20, 30] }";
-//	char arr[] = R"({"Temperature": {"sofia": 22 , "plovdiv": 32}, "stars" : 4.5})";
+	/*char arr[] = R"({"Temperature": {"sofia": {"mladost" : 12.89  , "nadezda": 32} , "plovdiv": 32}, "stars" : ["five", "four"] })";
 	sview s(arr, arr + strlen(arr));
 	try {
 		Value* value = factory(s);
@@ -58,6 +58,10 @@ int main() {
 	}
 	catch (std::exception& ex) {
 		std::cout << ex.what() << std::endl;
-	}
-	
+	}*/
+	Manager m;
+	std::ifstream ifs("example.json");
+	m.open(ifs);
+	m.print();
+	ifs.close();
 }
