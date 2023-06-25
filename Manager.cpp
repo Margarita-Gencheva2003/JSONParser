@@ -43,7 +43,7 @@ void Manager::open(std::ifstream& ifs)
 
 void Manager::print() const
 {
-    if (isOpened)
+    if (isOpened && json != nullptr)
         json->print();
     else
         std::cout << "Json not opened!" << std::endl;
