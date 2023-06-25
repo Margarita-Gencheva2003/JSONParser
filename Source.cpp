@@ -49,18 +49,11 @@ Value* factory(sview s) {
 	throw std::runtime_error("Malformed JSON: unknown");
 }
 int main() {
-	/*char arr[] = R"({"Temperature": {"sofia": {"mladost" : 12.89  , "nadezda": 32} , "plovdiv": 32}, "stars" : ["five", "four"] })";
-	sview s(arr, arr + strlen(arr));
-	try {
-		Value* value = factory(s);
-		value->print();
-		delete value;
-	}
-	catch (std::exception& ex) {
-		std::cout << ex.what() << std::endl;
-	}*/
 	Manager m;
-	std::ifstream ifs("example.json");
+	std::cout << "Import file name of json:";
+	char file[100];
+	std::cin >> file;
+	std::ifstream ifs(file);
 	m.open(ifs);
 	m.print();
 	ifs.close();
